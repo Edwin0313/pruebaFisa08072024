@@ -1,0 +1,75 @@
+{
+  "Routes": [
+    //Authentication WEB API
+    {
+      "UpstreamPathTemplate": "/authentication",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5162
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Account"
+    },
+    //Orders WEB API
+    {
+      "UpstreamPathTemplate": "/GetOrders",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5128
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Order",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/GetOrder/{orderId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5128
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Order/{orderId}"
+    },
+    // Items WEB API
+    {
+      "UpstreamPathTemplate": "/GetItems",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5213
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Item"
+    },
+    {
+      "UpstreamPathTemplate": "/GetItem/{itemId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5213
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Item/{itemId}"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl":  "https://localhost:800"
+  }
+
+}
